@@ -1,0 +1,36 @@
+<view class="container">
+    <view class="tabs">
+        <view class="tab" bindtap="onDefault">1</view>
+        <view class="tab" bindtap="onPending">2</view>
+        <view class="tab" bindtap="onRejected">3</view>
+        <view class="tab" bindtap="onResolved">4</view>
+    </view>
+    <states-view class="states-view" ui-class="states-ui-class" activeState="{{activeState1}}">
+        <state-view class="state-view" ui-class="state-ui-class" state="default">
+            <view>state default</view>
+        </state-view>
+        <state-view class="state-view" ui-class="state-ui-class" state="pending">
+            <view>state pending</view>
+        </state-view>
+        <state-view class="state-view" ui-class="state-ui-class" state="rejected">
+            <view>state rejected</view>
+        </state-view>
+        <state-view class="state-view" ui-class="state-ui-class" state="resolved">
+            <view>state resolved</view>
+            <view>
+                <view class="tabs">
+                    <view class="tab" bindtap="onDefault2">a</view>
+                    <view class="tab" bindtap="onPending2">b</view>
+                    <view class="tab" bindtap="onRejected2">c</view>
+                    <view class="tab" bindtap="onResolved2">d</view>
+                </view>
+                <states-view activeState="{{activeState2}}">
+                    <state-view state="a">a</state-view>
+                    <state-view state="b">b</state-view>
+                    <state-view state="c">c</state-view>
+                    <state-view state="d">d</state-view>
+                </states-view>
+            </view>
+        </state-view>
+    </states-view>
+</view>

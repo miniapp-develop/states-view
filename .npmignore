@@ -1,0 +1,10 @@
+pages
+app.js
+app.json
+app.wxss
+project.config.json
+package-lock.json
+node_modules
+sitemap.json
+.idea
+*.iml

@@ -1,0 +1,3 @@
+.ui-states{
+    box-sizing: border-box;
+}
