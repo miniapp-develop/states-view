@@ -1,6 +1,6 @@
 {
   "name": "mini-app-states-view",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "miniprogram": "miniprogram_dist",
   "scripts": {
