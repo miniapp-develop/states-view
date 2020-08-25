@@ -1,7 +1,5 @@
 pages
-app.js
-app.json
-app.wxss
+app.*
 project.config.json
 package-lock.json
 node_modules
