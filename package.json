@@ -7,7 +7,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:xesam/mini-app-states-view.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xesam/mini-app-states-view"
+  },
+  "homepage": "https://github.com/xesam/mini-app-states-view",
+  "devDependencies": {
+    "jest": "26.1.0"
+  },
   "keywords": [],
-  "author": "",
+  "author": "xesam",
   "license": "ISC"
 }
