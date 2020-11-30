@@ -9,7 +9,7 @@
                  ui-class="states-ui-class"
                  state="{{state1}}"
                  bind:statesChanged="onStatesChanged">
-        <loading ui-class="state-ui-class" state="1"/>
+        <loading ui-class="state-ui-class" state="1" bind:stateChanged="onStateChanged"/>
         <state-view class="state-view" ui-class="state-ui-class" state="2">
             <view>state 2</view>
         </state-view>

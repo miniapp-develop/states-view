@@ -21,8 +21,8 @@ index.json
 index.wxml
 
 ```html
-<states-view activeState="{{state}}">
-    <state-view state="a">a</state-view>
+<states-view state="{{state}}" bind:statesChanged="onStatesChanged">
+    <state-view state="a" bind:stateChanged="onStateChanged">a</state-view>
     <state-view state="b">b</state-view>
     <state-view state="c">c</state-view>
     <state-view state="d">d</state-view>

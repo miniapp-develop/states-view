@@ -9,6 +9,9 @@ Page({
     onStatesChanged(e) {
         console.log('onStatesChanged', e.detail);
     },
+    onStateChanged(e) {
+        console.log('onStateChanged', e.detail);
+    },
     onDefault(e) {
         this.setData({
             state1: e.currentTarget.dataset.state
