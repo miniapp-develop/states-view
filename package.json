@@ -1,6 +1,6 @@
 {
   "name": "mini-app-states-view",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "miniprogram": "libs",
   "main": "libs/index.js",

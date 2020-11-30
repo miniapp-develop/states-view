@@ -1,26 +1,20 @@
 import _Component from "./_Component";
 import {StateBehavior, StatesBehavior, StatesViewKey} from './BaseStates';
 
-export default function (opts = {}) {
+export default function (opts = {}, factory = _Component) {
     if (!opts.behaviors) {
         opts.behaviors = [];
     }
-    opts.behaviors.unshift(StateBehavior);
     if (!opts.relations) {
         opts.relations = {};
     }
+    opts.behaviors.unshift(StateBehavior);
     Object.assign(opts.relations, {
         [StatesViewKey]: {
             type: 'parent',
-            target: StatesBehavior,
-            linked(target) {
-            },
-            linkChanged(target) {
-            },
-            unlinked(target) {
-            }
+            target: StatesBehavior
         }
     });
 
-    return _Component(opts);
+    return factory(opts);
 }

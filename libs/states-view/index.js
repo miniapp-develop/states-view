@@ -1,4 +1,3 @@
 import StatesView from "../StatesView";
 
-StatesView({
-});
+StatesView();

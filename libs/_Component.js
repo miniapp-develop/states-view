@@ -1,11 +1,16 @@
 export default function _Component(opts = {}) {
-    return Component({
-        externalClasses: ['ui-class'],
-        options: {
-            styleIsolation: 'isolated',
-            multipleSlots: true,
-            pureDataPattern: /^\$_/
-        },
-        ...opts
-    });
+    if (!opts.externalClasses) {
+        opts.externalClasses = [];
+    }
+    opts.externalClasses.unshift('ui-class');
+    if (!opts.options) {
+        opts.options = {};
+    }
+    opts.options = {
+        styleIsolation: 'isolated',
+        multipleSlots: true,
+        pureDataPattern: /^\$_/,
+        ...opts.options
+    }
+    return Component(opts);
 };
