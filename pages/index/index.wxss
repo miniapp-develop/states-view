@@ -18,7 +18,7 @@ page, .container {
     flex: 1;
     padding: 20px 0;
     text-align: center;
-    background: #e4e4e4;
+    background: cadetblue;
 }
 
 .states-view {
@@ -27,10 +27,21 @@ page, .container {
 
 .states-ui-class {
     height: 100%;
-    border: 1px solid red;
+    background: coral;
 }
 
 .state-ui-class {
     height: 50%;
-    border: 1px solid blue;
+    background: gainsboro;
+}
+
+.state-ui-class-2 {
+    height: 50%;
+    background: aliceblue;
+}
+
+.nested {
+    width: 80vw;
+    margin: 50rpx auto;
+    box-shadow: #00000088 10rpx 10rpx;
 }

@@ -1,34 +1,35 @@
 <view class="container">
     <view class="tabs">
-        <view class="tab" bindtap="onDefault">1</view>
-        <view class="tab" bindtap="onPending">2</view>
-        <view class="tab" bindtap="onRejected">3</view>
-        <view class="tab" bindtap="onResolved">4</view>
+        <view class="tab" bindtap="onDefault" data-state="1">1</view>
+        <view class="tab" bindtap="onDefault" data-state="2">2</view>
+        <view class="tab" bindtap="onDefault" data-state="3">3</view>
+        <view class="tab" bindtap="onDefault" data-state="4">4</view>
     </view>
-    <states-view class="states-view" ui-class="states-ui-class" activeState="{{activeState1}}">
-        <state-view class="state-view" ui-class="state-ui-class" state="default">
-            <view>state default</view>
+    <states-view class="states-view"
+                 ui-class="states-ui-class"
+                 state="{{state1}}"
+                 bind:statesChanged="onStatesChanged">
+        <loading ui-class="state-ui-class" state="1"/>
+        <state-view class="state-view" ui-class="state-ui-class" state="2">
+            <view>state 2</view>
         </state-view>
-        <state-view class="state-view" ui-class="state-ui-class" state="pending">
-            <view>state pending</view>
+        <state-view class="state-view" ui-class="state-ui-class" state="3">
+            <view>state 3</view>
         </state-view>
-        <state-view class="state-view" ui-class="state-ui-class" state="rejected">
-            <view>state rejected</view>
-        </state-view>
-        <state-view class="state-view" ui-class="state-ui-class" state="resolved">
-            <view>state resolved</view>
-            <view>
+        <state-view class="state-view" ui-class="state-ui-class" state="4">
+            <view>state 4 / nested states-view</view>
+            <view class="nested">
                 <view class="tabs">
-                    <view class="tab" bindtap="onDefault2">a</view>
-                    <view class="tab" bindtap="onPending2">b</view>
-                    <view class="tab" bindtap="onRejected2">c</view>
-                    <view class="tab" bindtap="onResolved2">d</view>
+                    <view class="tab" bindtap="onTapNested" data-state="1">nest 1</view>
+                    <view class="tab" bindtap="onTapNested" data-state="2">nest 2</view>
+                    <view class="tab" bindtap="onTapNested" data-state="3">nest 3</view>
+                    <view class="tab" bindtap="onTapNested" data-state="4">nest 4</view>
                 </view>
-                <states-view activeState="{{activeState2}}">
-                    <state-view state="a">a</state-view>
-                    <state-view state="b">b</state-view>
-                    <state-view state="c">c</state-view>
-                    <state-view state="d">d</state-view>
+                <states-view state="{{state2}}">
+                    <state-view ui-class="state-ui-class-2" state="1">nest 1</state-view>
+                    <state-view ui-class="state-ui-class-2" state="2">nest 2</state-view>
+                    <state-view ui-class="state-ui-class-2" state="3">nest 3</state-view>
+                    <state-view ui-class="state-ui-class-2" state="4">nest 4</state-view>
                 </states-view>
             </view>
         </state-view>

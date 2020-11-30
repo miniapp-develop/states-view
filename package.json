@@ -2,7 +2,7 @@
   "name": "mini-app-states-view",
   "version": "0.0.2",
   "description": "",
-  "miniprogram": "miniprogram_dist",
+  "miniprogram": "libs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

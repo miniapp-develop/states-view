@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "states-view": "../miniprogram_dist/states-view/index",
-    "state-view": "../miniprogram_dist/state-view/index"
+    "states-view": "../../libs/states-view/index",
+    "state-view": "../../libs/state-view/index",
+    "loading": "./loading/index"
   }
 }

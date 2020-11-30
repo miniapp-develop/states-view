@@ -1,3 +1,0 @@
-<view class="ui-class" wx:if="{{parentState === state}}">
-    <slot></slot>
-</view>

@@ -1,49 +1,22 @@
 Page({
     data: {
-        activeState1: 'default',
-        activeState2: 'c'
+        state1: '1',
+        state2: '3'
     },
     onLoad(query) {
 
     },
+    onStatesChanged(e) {
+        console.log('onStatesChanged', e.detail);
+    },
     onDefault(e) {
         this.setData({
-            activeState1: 'default'
+            state1: e.currentTarget.dataset.state
         });
     },
-    onPending(e) {
+    onTapNested(e) {
         this.setData({
-            activeState1: 'pending'
-        });
-    },
-    onResolved(e) {
-        this.setData({
-            activeState1: 'resolved'
-        });
-    },
-    onRejected(e) {
-        this.setData({
-            activeState1: 'rejected'
-        });
-    },
-    onDefault2(e) {
-        this.setData({
-            activeState2: 'a'
-        });
-    },
-    onPending2(e) {
-        this.setData({
-            activeState2: 'b'
-        });
-    },
-    onRejected2(e) {
-        this.setData({
-            activeState2: 'c'
-        });
-    },
-    onResolved2(e) {
-        this.setData({
-            activeState2: 'd'
+            state2: e.currentTarget.dataset.state
         });
     }
 });
