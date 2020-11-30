@@ -1,8 +1,9 @@
 {
   "name": "mini-app-states-view",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "miniprogram": "libs",
+  "main": "libs/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
