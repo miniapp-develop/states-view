@@ -1,3 +1,4 @@
 .loading {
+    height: 50%;
     background: aquamarine;
 }

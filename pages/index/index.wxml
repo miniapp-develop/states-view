@@ -1,35 +1,29 @@
 <view class="container">
-    <view class="tabs">
+    <view class="outer-tabs">
         <view class="tab" bindtap="onDefault" data-state="1">1</view>
         <view class="tab" bindtap="onDefault" data-state="2">2</view>
         <view class="tab" bindtap="onDefault" data-state="3">3</view>
-        <view class="tab" bindtap="onDefault" data-state="4">4</view>
     </view>
-    <states-view class="states-view"
-                 ui-class="states-ui-class"
+    <states-view class="outer-states-view"
+                 ui-class="outer-states"
                  state="{{state1}}"
                  bind:statesChanged="onStatesChanged">
-        <loading ui-class="state-ui-class" state="1" bind:stateChanged="onStateChanged"/>
-        <state-view class="state-view" ui-class="state-ui-class" state="2">
+        <loading ui-class="outer-state-1" state="1" bind:stateChanged="onStateChanged"/>
+        <state-view class="state-view" ui-class="outer-state-2" state="2">
             <view>state 2</view>
         </state-view>
-        <state-view class="state-view" ui-class="state-ui-class" state="3">
-            <view>state 3</view>
-        </state-view>
-        <state-view class="state-view" ui-class="state-ui-class" state="4">
-            <view>state 4 / nested states-view</view>
+        <state-view class="state-view" ui-class="outer-state-3" state="3">
+            <view>state 3 / nested states-view</view>
             <view class="nested">
-                <view class="tabs">
+                <view class="inner-tabs">
                     <view class="tab" bindtap="onTapNested" data-state="1">nest 1</view>
                     <view class="tab" bindtap="onTapNested" data-state="2">nest 2</view>
                     <view class="tab" bindtap="onTapNested" data-state="3">nest 3</view>
-                    <view class="tab" bindtap="onTapNested" data-state="4">nest 4</view>
                 </view>
-                <states-view state="{{state2}}">
-                    <state-view ui-class="state-ui-class-2" state="1">nest 1</state-view>
-                    <state-view ui-class="state-ui-class-2" state="2">nest 2</state-view>
-                    <state-view ui-class="state-ui-class-2" state="3">nest 3</state-view>
-                    <state-view ui-class="state-ui-class-2" state="4">nest 4</state-view>
+                <states-view class="inner-states-view" ui-class="inner-states" state="{{state2}}">
+                    <state-view ui-class="inner-state-1" state="1">nest 1</state-view>
+                    <state-view ui-class="inner-state-2" state="2">nest 2</state-view>
+                    <state-view ui-class="inner-state-3" state="3">nest 3</state-view>
                 </states-view>
             </view>
         </state-view>
