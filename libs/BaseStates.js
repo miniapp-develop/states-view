@@ -38,6 +38,10 @@ const StateBehavior = Behavior({
         active: {
             type: Boolean,
             value: false
+        },
+        mode: {
+            type: String,
+            value: 'normal'
         }
     },
     methods: {

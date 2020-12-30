@@ -25,7 +25,7 @@ index.wxml
     <state-view state="a" bind:stateChanged="onStateChanged">a</state-view>
     <state-view state="b">b</state-view>
     <state-view state="c">c</state-view>
-    <state-view state="d">d</state-view>
+    <state-view state="d" mode="hidden">d</state-view>
 </states-view>
 ```
 
@@ -37,3 +37,8 @@ this.setData({
 });
 
 ```
+
+### changelog
+
+20201230
+1. 新增 mode 属性[normal | hidden]，如果设置为 hidden，则对应的 state-view 内容只会显示或者隐藏，不会重新创建。

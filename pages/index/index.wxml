@@ -21,9 +21,9 @@
                     <view class="tab" bindtap="onTapNested" data-state="3">nest 3</view>
                 </view>
                 <states-view class="inner-states-view" ui-class="inner-states" state="{{state2}}">
-                    <state-view ui-class="inner-state-1" state="1">nest 1</state-view>
-                    <state-view ui-class="inner-state-2" state="2">nest 2</state-view>
-                    <state-view ui-class="inner-state-3" state="3">nest 3</state-view>
+                    <state-view ui-class="inner-state-1" state="1" mode="hidden">nest 1 content</state-view>
+                    <state-view ui-class="inner-state-2" state="2" mode="hidden">nest 2 content</state-view>
+                    <state-view ui-class="inner-state-3" state="3" mode="hidden">nest 3 content</state-view>
                 </states-view>
             </view>
         </state-view>
