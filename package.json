@@ -1,5 +1,5 @@
 {
-  "name": "mini-app-states-view",
+  "name": "@mini-dev/states-view",
   "version": "0.0.6",
   "description": "",
   "miniprogram": "libs",
