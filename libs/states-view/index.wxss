@@ -1,3 +1,5 @@
-.ui-states{
+.ui-states {
+    height: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 }

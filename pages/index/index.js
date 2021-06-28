@@ -1,25 +1,56 @@
 Page({
     data: {
-        state1: '1',
-        state2: '3'
+        pageState: 'page-loading',
+        contentState: 'content-normal',
+        list: new Array(100).fill(0).map((ele, index) => {
+            return {
+                name: `item-${index}`
+            };
+        })
     },
     onLoad(query) {
-
+        setTimeout(() => {
+            this.setData({
+                pageState: 'page-fail'
+            });
+        }, 1000);
     },
-    onStatesChanged(e) {
+    onTapRetry(e) {
+        this.setData({
+            pageState: 'page-loading'
+        });
+        setTimeout(() => {
+            this.setData({
+                pageState: 'page-content'
+            });
+        }, 1000);
+    },
+    onTapReload(e) {
+        this.setData({
+            pageState: 'page-loading'
+        });
+        setTimeout(() => {
+            this.setData({
+                pageState: 'page-fail'
+            });
+        }, 1000);
+    },
+    onTapClear(e) {
+        this.setData({
+            pageState: 'page-empty'
+        });
+    },
+    onPageStatesChanged(e) {
         console.log('onStatesChanged', e.detail);
     },
-    onStateChanged(e) {
+    onPageStateChanged(e) {
         console.log('onStateChanged', e.detail);
     },
-    onDefault(e) {
-        this.setData({
-            state1: e.currentTarget.dataset.state
-        });
-    },
-    onTapNested(e) {
-        this.setData({
-            state2: e.currentTarget.dataset.state
-        });
+    onPulling() {
+        setTimeout(() => {
+            this.setData({
+                contentState: 'content-normal'
+            });
+        }, 3000);
     }
 });

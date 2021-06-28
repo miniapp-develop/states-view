@@ -1,30 +1,32 @@
-<view class="container">
-    <view class="outer-tabs">
-        <view class="tab" bindtap="onDefault" data-state="1">1</view>
-        <view class="tab" bindtap="onDefault" data-state="2">2</view>
-        <view class="tab" bindtap="onDefault" data-state="3">3</view>
+<view class="page-wrapper">
+    <view class="header">
+        StatesView/StateView 演示
     </view>
     <states-view class="outer-states-view"
-                 ui-class="outer-states"
-                 state="{{state1}}"
-                 bind:statesChanged="onStatesChanged">
-        <loading ui-class="outer-state-1" state="1" bind:stateChanged="onStateChanged"/>
-        <state-view class="state-view" ui-class="outer-state-2" state="2">
-            <view>state 2</view>
+                 ui-class="states-view-ui-class"
+                 state="{{pageState}}"
+                 bind:statesChanged="onPageStatesChanged">
+        <loading state="page-loading" ui-class="page-loading" bind:stateChanged="onPageStateChanged"/>
+        <state-view state="page-fail" ui-class="page-fail">
+            <view class="fail-txt">加载失败</view>
+            <button type="warn" bind:tap="onTapRetry">重试</button>
         </state-view>
-        <state-view class="state-view" ui-class="outer-state-3" state="3">
-            <view>state 3 / nested states-view</view>
-            <view class="nested">
-                <view class="inner-tabs">
-                    <view class="tab" bindtap="onTapNested" data-state="1">nest 1</view>
-                    <view class="tab" bindtap="onTapNested" data-state="2">nest 2</view>
-                    <view class="tab" bindtap="onTapNested" data-state="3">nest 3</view>
-                </view>
-                <states-view class="inner-states-view" ui-class="inner-states" state="{{state2}}">
-                    <state-view ui-class="inner-state-1" state="1" mode="hidden">nest 1 content</state-view>
-                    <state-view ui-class="inner-state-2" state="2" mode="hidden">nest 2 content</state-view>
-                    <state-view ui-class="inner-state-3" state="3" mode="hidden">nest 3 content</state-view>
-                </states-view>
+        <state-view state="page-empty" ui-class="page-empty">
+            <view>page-empty</view>
+            <button type="primary" bind:tap="onTapReload">重新加载</button>
+        </state-view>
+        <state-view ui-class="page-content" state="page-content">
+            <view>
+                <button bind:tap="onTapClear">清空</button>
+            </view>
+            <view class="scroll-wrapper">
+                <scroll-view class="content-list"
+                             scroll-y="true"
+                             bind:refresherpulling="onPulling"
+                             refresher-enabled="true"
+                             refresher-triggered="{{contentState === 'content-loading'}}">
+                    <view wx:for="{{list}}" wx:key="index" class="content-item">{{item.name}}</view>
+                </scroll-view>
             </view>
         </state-view>
     </states-view>

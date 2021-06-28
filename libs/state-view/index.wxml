@@ -1,10 +1,10 @@
-<block wx:if="{{mode==='normal'}}">
-    <view class="ui-class" wx:if="{{active}}">
+<block wx:if="{{mode==='hidden'}}">
+    <view class="ui-state ui-class" hidden="{{!active}}">
         <slot></slot>
     </view>
 </block>
 <block wx:else>
-    <view class="ui-class" hidden="{{!active}}">
+    <view class="ui-state ui-class" wx:if="{{active}}">
         <slot></slot>
     </view>
 </block>

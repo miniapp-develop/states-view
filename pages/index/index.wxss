@@ -1,86 +1,52 @@
-page, .container {
-    height: 100%;
-}
-
-.container {
+.page-wrapper {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
-.outer-tabs {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.outer-tabs .tab {
-    flex: 1;
-    padding: 20px 0;
+.header {
+    font-size: 1em;
+    padding: 0.5em;
     text-align: center;
-    background: cadetblue;
+    background: coral;
 }
 
 .outer-states-view {
     flex: 1;
+    overflow: hidden;
 }
 
-.outer-states {
-    height: 100%;
+.states-view-ui-class {
     background: cornsilk;
 }
 
-.outer-state-1 {
-    height: 50%;
-    background: gainsboro;
+.page-fail .fail-txt {
+    padding-top: 100rpx;
+    padding-bottom: 24rpx;
+    text-align: center;
+    color: red;
 }
 
-.outer-state-2 {
-    height: 50%;
-    background: crimson;
+.page-empty {
+    padding-top: 100rpx;
+    text-align: center;
 }
 
-.outer-state-3 {
-    height: 50%;
-    background: burlywood;
-}
-
-.nested {
+.page-content {
     display: flex;
-    flex-direction: row;
-    width: 80vw;
-    height: 50%;
-    margin: 50rpx auto;
-    border: 1px solid #000;
-    box-shadow: #00000088 10rpx 10rpx;
+    flex-direction: column;
 }
 
-.inner-tabs .tab {
-    padding: 12rpx;
-    background: darkkhaki;
-}
-
-.inner-states-view {
-    display: block;
+.scroll-wrapper {
     flex: 1;
+    overflow: hidden;
+}
+
+.content-list {
     height: 100%;
 }
 
-.inner-states {
-    height: 100%;
-}
-
-.inner-state-1 {
-    height: 100%;
-    background: goldenrod;
-}
-
-.inner-state-2 {
-    height: 100%;
-    background: darkkhaki;
-}
-
-.inner-state-3 {
-    height: 100%;
-    background: lightblue;
+.content-item {
+    border-bottom: 1px solid #e4e4e4;
+    padding: 24rpx;
 }

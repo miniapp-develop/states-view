@@ -1,7 +1,7 @@
 {
   "name": "@mini-dev/states-view",
-  "version": "0.0.6",
-  "description": "",
+  "version": "0.0.7",
+  "description": "wexin miniapp states view",
   "miniprogram": "libs",
   "main": "libs/index.js",
   "scripts": {
