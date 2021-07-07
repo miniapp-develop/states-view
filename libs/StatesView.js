@@ -1,23 +1,35 @@
 import _Component from "./_Component";
-import {StateBehavior, StatesBehavior, StateViewKey} from './BaseStates';
+import {parent} from './statesContext';
 
-export default function (opts = {}, factory = _Component) {
-    if (!opts.behaviors) {
-        opts.behaviors = [];
-    }
-    if (!opts.relations) {
-        opts.relations = {};
-    }
-    opts.behaviors.unshift(StatesBehavior);
-    Object.assign(opts.relations, {
-        [StateViewKey]: {
-            type: 'child',
-            target: StateBehavior,
-            linked(child) {
-                child._onParentChanged(this.data.state);
+const StatesBehavior = Behavior({
+    properties: {
+        state: {
+            type: String,
+            value: '',
+            observer(newStates, oldStates) {
+                if (newStates !== oldStates) {
+                    this._onChanged(newStates, oldStates);
+                }
             }
         }
-    });
+    },
+    methods: {
+        getState() {
+            return this.data.state;
+        },
+        _onChanged(newStates, oldStates) {
+            const children = this.getChildren();
+            for (const child of children) {
+                child.onParentChanged(newStates);
+            }
+            this.triggerEvent('statesChanged', {newStates, oldStates});
+            this.onStatesChanged && this.onStatesChanged(newStates, oldStates);
+        }
+    }
+});
 
-    return factory(opts);
+export default function (opts = {}, factory = _Component) {
+    opts.behaviors = opts.behaviors || [];
+    opts.behaviors.unshift(StatesBehavior);
+    return parent(opts, factory);
 }

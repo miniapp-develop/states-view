@@ -41,10 +41,10 @@ Page({
         });
     },
     onPageStatesChanged(e) {
-        console.log('onStatesChanged', e.detail);
+        console.log('onPageStatesChanged', e.detail);
     },
     onPageStateChanged(e) {
-        console.log('onStateChanged', e.detail);
+        console.log('onPageStateChanged', e.detail);
     },
     onPulling() {
         setTimeout(() => {
