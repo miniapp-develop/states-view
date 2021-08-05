@@ -17,7 +17,7 @@ const StateBehavior = Behavior({
         }
     },
     methods: {
-        onParentChanged(states) {
+        onRelativeChanged(states) {
             if (typeof states === 'string') {
                 states = [states];
             }

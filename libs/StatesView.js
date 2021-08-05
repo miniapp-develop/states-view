@@ -14,13 +14,13 @@ const StatesBehavior = Behavior({
         }
     },
     methods: {
-        getState() {
+        getRelativeData() {
             return this.data.state;
         },
         _onChanged(newStates, oldStates) {
-            const children = this.getChildren();
+            const children = this.getRelative();
             for (const child of children) {
-                child.onParentChanged(newStates);
+                child.onRelativeChanged(newStates);
             }
             this.triggerEvent('statesChanged', {newStates, oldStates});
             this.onStatesChanged && this.onStatesChanged(newStates, oldStates);

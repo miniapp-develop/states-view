@@ -1,64 +1,114 @@
-const rd = Math.random().toString();
+function _array(val) {
+    return val || [];
+}
 
-function create(p, s) {
-    return function (opts, factory) {
-        opts.behaviors = opts.behaviors || [];
-        opts.behaviors.unshift(p);
-        opts.relations = opts.relations || {};
-        opts.relations = {
-            ...s,
-            ...opts.relations
-        };
-        return factory(opts);
+function _object(val) {
+    return val || {};
+}
+
+function _concat(a, b) {
+    return _array(a).concat(_array(b))
+}
+
+function _assign(a, b) {
+    return Object.assign({}, _object(a), _object(b));
+}
+
+function preset(extra) {
+    return function (options = {}, factory) {
+        options.externalClasses = _concat(extra.externalClasses, options.externalClasses);
+        options.behaviors = _concat(extra.behaviors, options.behaviors);
+        options.options = _assign(_object(extra.options), _object(options.options));
+        options.relations = _assign(_object(extra.relations), _object(options.relations));
+        return factory(options);
     }
 }
 
-function context() {
-    const parentKey = 'parentKey' + rd;
-    const parentBehavior = Behavior({
+const UiComponent = preset({
+    externalClasses: ['ui-class'],
+    options: {
+        styleIsolation: 'isolated',
+        multipleSlots: true,
+        pureDataPattern: /^\$_/
+    }
+});
+
+function connect(high, low) {
+    const randKey = Math.random().toString();
+    const highKey = 'high$' + randKey;
+    const lowKey = 'low$' + randKey;
+
+    const highBehavior = Behavior({
         methods: {
-            getChildren() {
-                return this.getRelationNodes(childKey);
+            getRelative() {
+                return this.getRelationNodes(lowKey);
             },
-            getState() {
-                console.log('default getState()');
+            getRelativeData() {
                 return null;
             }
         }
     });
-    const childKey = 'childKey' + rd;
-    const childBehavior = Behavior({
+
+    const lowBehavior = Behavior({
         methods: {
-            getParent() {
-                return this.getRelationNodes(parentKey)[0];
+            getRelative() {
+                return this.getRelationNodes(highKey)[0];
             },
-            onParentChanged() {
-                console.log('default onParentChanged()');
+            getRelativeData() {
+                return null;
+            },
+            onRelativeChanged() {
+                console.log('default onRelativeChanged()');
             }
         }
     });
 
-    const parent = create(parentBehavior, {
-        [childKey]: {
-            type: 'child',
-            target: childBehavior,
-            linked(child) {
-                child.onParentChanged(this.getState());
+    const highComponent = preset({
+        behaviors: [highBehavior],
+        relations: {
+            [lowKey]: {
+                type: low,
+                target: lowBehavior,
+                linked(child) {
+                    child.onRelativeChanged(this.getRelativeData());
+                }
             }
         }
     });
 
-    const child = create(childBehavior, {
-        [parentKey]: {
-            type: 'parent',
-            target: parentBehavior
+    const lowComponent = preset({
+        behaviors: [lowBehavior],
+        relations: {
+            [highKey]: {
+                type: high,
+                target: highBehavior
+            }
         }
     });
 
     return {
-        parent,
-        child
+        highComponent,
+        lowComponent
     }
 }
 
-export default context;
+function connectParentChildren() {
+    const {highComponent, lowComponent} = connect('parent', 'child');
+    return {
+        parent: highComponent,
+        child: lowComponent
+    }
+}
+
+function connectAncestorDescendant() {
+    const {highComponent, lowComponent} = connect('ancestor', 'descendant');
+    return {
+        ancestor: highComponent,
+        descendant: lowComponent
+    }
+}
+
+export {
+    connectParentChildren,
+    connectAncestorDescendant,
+};
