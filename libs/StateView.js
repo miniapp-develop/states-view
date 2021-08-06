@@ -1,5 +1,4 @@
-import _Component from "./_Component";
-import {child} from './statesContext';
+import {child, StateComponent} from './statesContext';
 
 const StateBehavior = Behavior({
     properties: {
@@ -17,12 +16,9 @@ const StateBehavior = Behavior({
         }
     },
     methods: {
-        onRelativeChanged(states) {
-            if (typeof states === 'string') {
-                states = [states];
-            }
+        onRelativeStateChanged(state) {
             const oldActive = this.data.active;
-            const newActive = !!states.find(ele => ele === this.data.state);
+            const newActive = state === this.data.state;
             if (newActive !== oldActive) {
                 this.setData({
                     active: newActive
@@ -36,7 +32,7 @@ const StateBehavior = Behavior({
     }
 });
 
-export default function (opts = {}, factory = _Component) {
+export default function (opts = {}, factory = StateComponent) {
     opts.behaviors = opts.behaviors || [];
     opts.behaviors.unshift(StateBehavior);
     return child(opts, factory);

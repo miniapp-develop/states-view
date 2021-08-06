@@ -40,9 +40,6 @@ Page({
             pageState: 'page-empty'
         });
     },
-    onPageStatesChanged(e) {
-        console.log('onPageStatesChanged', e.detail);
-    },
     onPageStateChanged(e) {
         console.log('onPageStateChanged', e.detail);
     },

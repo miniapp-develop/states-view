@@ -15,6 +15,9 @@
     "url": "https://github.com/xesam/mini-app-states-view"
   },
   "homepage": "https://github.com/xesam/mini-app-states-view",
+  "dependencies": {
+    "@mini-dev/connect": "0.0.2"
+  },
   "devDependencies": {
     "jest": "26.1.0"
   },

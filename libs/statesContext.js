@@ -1,4 +1,7 @@
-import {connectParentChildren} from './context';
+const {connectParentChildren, UiComponent} = require('@mini-dev/connect');
 
-const {parent, child} = connectParentChildren();
-export {parent, child};
+export function StateComponent(options) {
+    return UiComponent(options, Component);
+}
+
+export const {parent, child} = connectParentChildren();

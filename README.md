@@ -40,5 +40,9 @@ this.setData({
 
 ### changelog
 
-20201230
+#### 0.0.8 
+1. 最低基础库 2.6.5.
+2. 属性统一修改为 state.
+
+#### 20201230
 1. 新增 mode 属性[normal | hidden]，如果设置为 hidden，则对应的 state-view 内容只会显示或者隐藏，不会重新创建。

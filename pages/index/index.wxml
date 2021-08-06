@@ -4,8 +4,7 @@
     </view>
     <states-view class="outer-states-view"
                  ui-class="states-view-ui-class"
-                 state="{{pageState}}"
-                 bind:statesChanged="onPageStatesChanged">
+                 state="{{pageState}}">
         <loading state="page-loading" ui-class="page-loading" bind:stateChanged="onPageStateChanged"/>
         <state-view state="page-fail" ui-class="page-fail">
             <view class="fail-txt">加载失败</view>
