@@ -6,14 +6,17 @@
 开启微信小程序的 npm 支持：
 [https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)
 
+```shell script
+npm install @mini-dev/states-view
+```
 
 index.json
 
 ```json
 {
   "usingComponents": {
-    "states-view": "mini-app-states-view/states-view/index",
-    "state-view": "mini-app-states-view/state-view/index"
+    "states-view": "@mini-dev/states-view/states-view",
+    "state-view": "@mini-dev/states-view/state-view"
   }
 }
 ```
