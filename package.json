@@ -9,17 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:xesam/mini-app-states-view.git"
+    "url": "git+git@github.com:miniapp-develop/states-view.git"
   },
   "bugs": {
-    "url": "https://github.com/xesam/mini-app-states-view"
+    "url": "https://github.com/miniapp-develop/states-view"
   },
-  "homepage": "https://github.com/xesam/mini-app-states-view",
+  "homepage": "https://github.com/miniapp-develop/states-view",
   "dependencies": {
     "@mini-dev/connect": "0.0.2"
-  },
-  "devDependencies": {
-    "jest": "26.1.0"
   },
   "keywords": [],
   "author": "xesam",
