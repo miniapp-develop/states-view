@@ -1,3 +1,3 @@
-import StateView from "../StateView";
+const {StateView} = require('../index');
 
 StateView();

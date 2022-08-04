@@ -20,11 +20,17 @@
     background: cornsilk;
 }
 
-.page-fail .fail-txt {
-    padding-top: 100rpx;
-    padding-bottom: 24rpx;
+.page-fail {
     text-align: center;
-    color: red;
+}
+
+.message-text {
+    padding: 4em 0 0 0;
+}
+
+.message-action {
+    padding: 0.8em;
+    color: cadetblue;
 }
 
 .page-empty {

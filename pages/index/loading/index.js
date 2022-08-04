@@ -1,4 +1,4 @@
-import StateView from "../../../libs/StateView";
+const {StateView} = require("../../../libs/index")
 
 StateView({
     created() {

@@ -1,20 +1,18 @@
 <view class="page-wrapper">
-    <view class="header">
-        StatesView/StateView 演示
-    </view>
     <states-view class="outer-states-view"
-                 ui-class="states-view-ui-class"
+                 mini-class="states-view-mini-class"
+                 debug
                  state="{{pageState}}">
-        <loading state="page-loading" ui-class="page-loading" bind:stateChanged="onPageStateChanged"/>
-        <state-view state="page-fail" ui-class="page-fail">
-            <view class="fail-txt">加载失败</view>
-            <button type="warn" bind:tap="onTapRetry">重试</button>
+        <loading state="page-loading" mini-class="page-loading" bind:stateChanged="onPageStateChanged"/>
+        <state-view state="page-fail" mini-class="page-fail">
+            <view class="message-text">加载失败</view>
+            <view class="message-action" bind:tap="onTapRetry">重试</view>
         </state-view>
-        <state-view state="page-empty" ui-class="page-empty">
-            <view>page-empty</view>
-            <button type="primary" bind:tap="onTapReload">重新加载</button>
+        <state-view state="page-empty" mini-class="page-empty">
+            <view class="message-text">没有结果</view>
+            <view class="message-action" bind:tap="onTapReload">重新加载</view>
         </state-view>
-        <state-view ui-class="page-content" state="page-content">
+        <state-view mini-class="page-content" state="page-content">
             <view>
                 <button bind:tap="onTapClear">清空</button>
             </view>
