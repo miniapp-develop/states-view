@@ -1,12 +1,8 @@
-const {connectParentChildren, MiniComponent} = require('@mini-dev/view-support');
-
-export function StateComponent(options) {
-    return MiniComponent(options, Component);
-}
+const {connectParentChildren, createPresetComponent, MiniComponent} = require('@mini-dev/view-support');
 
 export const {parent, child} = connectParentChildren('state');
 
-exports.StatesView = function (opts = {}, factory = StateComponent) {
+exports.StatesView = function (opts = {}, factory = MiniComponent) {
     return parent(opts, factory);
 }
 
@@ -42,8 +38,12 @@ const StateBehavior = Behavior({
     }
 });
 
-exports.StateView = function (opts = {}, factory = StateComponent) {
-    opts.behaviors = opts.behaviors || [];
-    opts.behaviors.unshift(StateBehavior);
-    return child(opts, factory);
+const StateComponent = createPresetComponent({
+    behaviors: [StateBehavior]
+});
+
+exports.StateView = function (opts = {}, factory = MiniComponent) {
+    StateComponent(opts, function (o) {
+        child(o, factory)
+    })
 }
