@@ -2,8 +2,14 @@ const {connectParentChildren, createPresetComponent, MiniComponent} = require('@
 
 export const {parent, child} = connectParentChildren('state');
 
-exports.StatesView = function (opts = {}, factory = MiniComponent) {
-    return parent(opts, factory);
+const Parent = createPresetComponent({
+    options: {virtualHost: true}
+});
+
+exports.StatesView = function (option = {}, factory = MiniComponent) {
+    Parent(option, function (o) {
+        parent(o, factory);
+    });
 }
 
 const StateBehavior = Behavior({
@@ -11,10 +17,6 @@ const StateBehavior = Behavior({
         state: {
             type: String,
             value: ''
-        },
-        active: {
-            type: Boolean,
-            value: false
         },
         mode: {
             type: String,
@@ -29,7 +31,7 @@ const StateBehavior = Behavior({
                 this.setData({
                     active: newActive
                 });
-                this.triggerEvent('stateChanged', {
+                this.triggerEvent('change', {
                     active: newActive
                 });
                 this.onStateChanged && this.onStateChanged(newActive, oldActive);
@@ -39,6 +41,10 @@ const StateBehavior = Behavior({
 });
 
 const StateComponent = createPresetComponent({
+    options: {virtualHost: true},
+    data: {
+        active: false
+    },
     behaviors: [StateBehavior]
 });
 

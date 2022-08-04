@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/miniapp-develop/states-view",
   "dependencies": {
-    "@mini-dev/view-support": "0.0.3"
+    "@mini-dev/view-support": "0.0.4"
   },
   "keywords": [],
   "author": "xesam",

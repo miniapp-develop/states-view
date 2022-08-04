@@ -3,7 +3,7 @@
                  mini-class="states-view-mini-class"
                  debug
                  state="{{pageState}}">
-        <loading state="page-loading" mini-class="page-loading" bind:stateChanged="onPageStateChanged"/>
+        <loading state="page-loading" mini-class="page-loading" bindchange="onPageStateChanged"/>
         <state-view state="page-fail" mini-class="page-fail">
             <view class="message-text">加载失败</view>
             <view class="message-action" bind:tap="onTapRetry">重试</view>
