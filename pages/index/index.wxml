@@ -6,11 +6,11 @@
         <loading state="page-loading" mini-class="page-loading" bindchange="onPageStateChanged"/>
         <state-view state="page-fail" mini-class="page-fail">
             <view class="message-text">加载失败</view>
-            <view class="message-action" bind:tap="onTapRetry">重试</view>
+            <view class="message-action" bind:tap="onTapRetry">点击重试</view>
         </state-view>
         <state-view state="page-empty" mini-class="page-empty">
             <view class="message-text">没有结果</view>
-            <view class="message-action" bind:tap="onTapReload">重新加载</view>
+            <view class="message-action" bind:tap="onTapReload">点击重新加载</view>
         </state-view>
         <state-view mini-class="page-content" state="page-content">
             <view>

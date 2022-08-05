@@ -21,20 +21,23 @@
 }
 
 .page-fail {
+    background: cadetblue;
     text-align: center;
 }
 
 .message-text {
     padding: 4em 0 0 0;
+    font-size: 1.5em;
+    color: white;
 }
 
 .message-action {
     padding: 0.8em;
-    color: cadetblue;
+    text-decoration: underline;
 }
 
 .page-empty {
-    padding-top: 100rpx;
+    background: chocolate;
     text-align: center;
 }
 

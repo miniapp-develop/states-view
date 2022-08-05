@@ -2,14 +2,12 @@ const {connectParentChildren, createPresetComponent, MiniComponent} = require('@
 
 export const {parent, child} = connectParentChildren('state');
 
-const Parent = createPresetComponent({
+const StatesComponent = createPresetComponent({
     options: {virtualHost: true}
 });
 
-exports.StatesView = function (option = {}, factory = MiniComponent) {
-    Parent(option, function (o) {
-        parent(o, factory);
-    });
+exports.StatesView = function (option, factory = MiniComponent) {
+    StatesComponent(option, parent, factory);
 }
 
 const StateBehavior = Behavior({
@@ -48,8 +46,6 @@ const StateComponent = createPresetComponent({
     behaviors: [StateBehavior]
 });
 
-exports.StateView = function (opts = {}, factory = MiniComponent) {
-    StateComponent(opts, function (o) {
-        child(o, factory)
-    })
+exports.StateView = function (option, factory = MiniComponent) {
+    StateComponent(option, child, factory);
 }
