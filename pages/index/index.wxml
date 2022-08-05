@@ -12,7 +12,7 @@
             <view class="message-text">没有结果</view>
             <view class="message-action" bind:tap="onTapReload">点击重新加载</view>
         </state-view>
-        <state-view mini-class="page-content" state="page-content">
+        <state-view mini-class="page-content" state="page-content" mode="hidden">
             <view>
                 <button bind:tap="onTapClear">清空</button>
             </view>
