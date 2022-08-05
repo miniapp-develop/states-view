@@ -1,7 +1,7 @@
 pages
 app
 app.*
-project.config.json
+*.config.json
 package-lock.json
 node_modules
 miniprogram_npm
