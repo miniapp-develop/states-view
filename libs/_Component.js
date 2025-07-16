@@ -2,11 +2,12 @@ export default function _Component(opts = {}) {
     if (!opts.externalClasses) {
         opts.externalClasses = [];
     }
-    opts.externalClasses.unshift('ui-class');
+    opts.externalClasses.unshift('mini-class');
     if (!opts.options) {
         opts.options = {};
     }
     opts.options = {
+        virtualHost: true,
         styleIsolation: 'isolated',
         multipleSlots: true,
         pureDataPattern: /^\$_/,

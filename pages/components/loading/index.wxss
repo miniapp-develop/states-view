@@ -1,6 +1,7 @@
 .loading {
     height: 50%;
-    background: aquamarine;
+    margin: 4em;
+    background: #fbe5bc;
 }
 
 .loading-txt {

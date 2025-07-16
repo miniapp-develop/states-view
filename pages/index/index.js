@@ -1,19 +1,24 @@
 Page({
     data: {
         pageState: 'page-loading',
-        contentState: 'content-normal',
-        list: new Array(100).fill(0).map((ele, index) => {
+        successState: 'success-empty',
+        list: new Array(50).fill(0).map((ele, index) => {
             return {
                 name: `item-${index}`
             };
         })
     },
-    onLoad(query) {
-        setTimeout(() => {
-            this.setData({
-                pageState: 'page-fail'
-            });
-        }, 1000);
+    onTapPageState(e) {
+        const state = e.currentTarget.dataset.state;
+        this.setData({
+            pageState: state
+        })
+    },
+    onTapSuccessState(e) {
+        const state = e.currentTarget.dataset.state;
+        this.setData({
+            successState: state
+        })
     },
     onTapRetry(e) {
         this.setData({
@@ -21,36 +26,24 @@ Page({
         });
         setTimeout(() => {
             this.setData({
-                pageState: 'page-content'
+                pageState: 'page-success'
             });
         }, 1000);
     },
-    onTapReload(e) {
+    onTapSuccessNew(e) {
         this.setData({
-            pageState: 'page-loading'
+            successState: 'success-loading'
         });
         setTimeout(() => {
             this.setData({
-                pageState: 'page-fail'
+                successState: 'success-content'
             });
         }, 1000);
-    },
-    onTapClear(e) {
-        this.setData({
-            pageState: 'page-empty'
-        });
-    },
-    onPageStatesChanged(e) {
-        console.log('onStatesChanged', e.detail);
     },
     onPageStateChanged(e) {
-        console.log('onStateChanged', e.detail);
+        console.log('onPageStateChanged', e.detail);
     },
-    onPulling() {
-        setTimeout(() => {
-            this.setData({
-                contentState: 'content-normal'
-            });
-        }, 3000);
+    onSuccessStateChanged(e) {
+        console.log('onSuccessStateChanged', e.detail);
     }
 });

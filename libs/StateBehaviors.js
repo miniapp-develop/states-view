@@ -19,12 +19,12 @@ const StatesBehavior = Behavior({
             for (const child of children) {
                 child._onParentChanged(newStates);
             }
-            this._onStatesChanged(newStates, oldStates);
-            this.onStatesChanged && this.onStatesChanged(newStates, oldStates);
+            this._onStateChanged(newStates, oldStates);
+            this.onStateChanged && this.onStateChanged(newStates, oldStates);
         },
 
-        _onStatesChanged(newStates, oldStates) {
-            this.triggerEvent('statesChanged', {newStates, oldStates});
+        _onStateChanged(newStates, oldStates) {
+            this.triggerEvent('stateChanged', {newStates, oldStates});
         }
     }
 });

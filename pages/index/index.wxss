@@ -1,38 +1,52 @@
-.page-wrapper {
+.page {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.header {
-    font-size: 1em;
+.state-indicator{
+    padding: 0.5em 2em;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
     padding: 0.5em;
+    gap: 0.5em;
+}
+
+.page-state-container {
+    border: 2px solid red;
+}
+
+.page-fail {
+    background-color: #fddfdf;
     text-align: center;
-    background: coral;
 }
 
-.outer-states-view {
-    flex: 1;
-    overflow: hidden;
-}
-
-.states-view-ui-class {
-    background: cornsilk;
-}
-
-.page-fail .fail-txt {
+.page-fail {
     padding-top: 100rpx;
     padding-bottom: 24rpx;
     text-align: center;
     color: red;
 }
 
-.page-empty {
+.page-success {
+    background-color: #e0ffd4;
+}
+
+.success-state-container {
+    height: 50vh;
+    margin: 1em;
+    border: 2px solid blue;
+}
+
+.success-empty {
     padding-top: 100rpx;
     text-align: center;
 }
 
-.page-content {
+.success-content {
     display: flex;
     flex-direction: column;
 }
