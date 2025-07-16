@@ -1,3 +1,0 @@
-<view class="ui-states ui-class">
-    <slot></slot>
-</view>

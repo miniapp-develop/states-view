@@ -1,6 +1,5 @@
 {
     "usingComponents": {
-        "states-view": "../../libs/states-view/index",
         "state-container": "../../libs/state-container/index",
         "state-view": "../../libs/state-view/index",
         "loading": "/pages/components/loading/index"
