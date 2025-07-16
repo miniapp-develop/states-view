@@ -24,7 +24,7 @@ const StateContainerBehavior = Behavior({
         },
 
         _onStateChanged(newStates, oldStates) {
-            this.triggerEvent('stateChanged', {newStates, oldStates});
+            this.triggerEvent('change', {newStates, oldStates});
         }
     }
 });
@@ -45,22 +45,19 @@ const StateItemBehavior = Behavior({
         }
     },
     methods: {
-        _onParentChanged(states) {
-            if (typeof states === 'string') {
-                states = [states];
-            }
-            const current = this.data.active;
-            const active = !!states.find(ele => ele === this.data.state);
-            if (active !== current) {
+        _onParentChanged(parentState) {
+            const currentActive = this.data.active;
+            const newActive = parentState === this.data.state;
+            if (newActive !== currentActive) {
                 this.setData({
-                    active
+                    active: newActive
                 });
-                this._onStateChanged(active, current);
-                this.onStateChanged && this.onStateChanged(active, current);
+                this._onStateChanged(newActive, currentActive);
+                this.onStateChanged && this.onStateChanged(newActive, currentActive);
             }
         },
         _onStateChanged(newActive, oldActive) {
-            this.triggerEvent('stateChanged', {
+            this.triggerEvent('change', {
                 active: newActive
             });
         }

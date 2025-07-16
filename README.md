@@ -28,8 +28,8 @@ index.wxml
 
 ```html
 
-<state-container state="{{state}}" bind:stateChanged="xxx">
-    <state-item state="a" bind:stateChanged="yyy">a</state-item>
+<state-container state="{{state}}" bind:change="xxx">
+    <state-item state="a" bind:change="yyy">a</state-item>
     <state-item state="b">b</state-item>
     <state-item state="c">c</state-item>
     <state-item state="d" mode="hidden">d</state-item>
