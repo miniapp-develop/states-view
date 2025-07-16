@@ -1,30 +1,45 @@
-<view class="page-wrapper">
-    <states-view class="outer-states-view"
-                 mini-class="states-view-mini-class"
-                 debug
-                 state="{{pageState}}">
-        <loading state="page-loading" mini-class="page-loading" bindchange="onPageStateChanged"/>
-        <state-view state="page-fail" mini-class="page-fail">
-            <view class="message-text">加载失败</view>
-            <view class="message-action" bind:tap="onTapRetry">点击重试</view>
-        </state-view>
-        <state-view state="page-empty" mini-class="page-empty">
-            <view class="message-text">没有结果</view>
-            <view class="message-action" bind:tap="onTapReload">点击重新加载</view>
-        </state-view>
-        <state-view mini-class="page-content" state="page-content" mode="hidden">
-            <view>
-                <button bind:tap="onTapClear">清空</button>
+<view class="page">
+    <text class="state-indicator">
+        pageState:{{pageState}}
+        successState:{{successState}}
+    </text>
+    <view class="actions">
+        <button type="default" class="action" bind:tap="onTapPageState" data-state="page-loading">loading</button>
+        <button type="warn" class="action" bind:tap="onTapPageState" data-state="page-fail">fail</button>
+        <button type="primary" class="action" bind:tap="onTapPageState" data-state="page-success">success</button>
+    </view>
+    <state-container mini-class="page-state-container"
+                     state="{{pageState}}"
+                     bind:change="onPageStateChanged">
+        <loading state="page-loading" mini-class="page-loading" bind:change="onPageStateChanged"/>
+        <state-item state="page-fail" mini-class="page-fail">
+            <view class="fail-txt">加载失败</view>
+            <button type="warn" bind:tap="onTapRetry">重试</button>
+        </state-item>
+        <state-item state="page-success" mini-class="page-success">
+            <view class="actions">
+                <button type="default" class="action" bind:tap="onTapSuccessState" data-state="success-empty">empty</button>
+                <button type="primary" class="action" bind:tap="onTapSuccessState" data-state="success-content">content</button>
             </view>
-            <view class="scroll-wrapper">
-                <scroll-view class="content-list"
-                             scroll-y="true"
-                             bind:refresherpulling="onPulling"
-                             refresher-enabled="true"
-                             refresher-triggered="{{contentState === 'content-loading'}}">
-                    <view wx:for="{{list}}" wx:key="index" class="content-item">{{item.name}}</view>
-                </scroll-view>
-            </view>
-        </state-view>
-    </states-view>
+            <state-container mini-class="success-state-container"
+                             state="{{successState}}"
+                             bind:change="onSuccessStateChanged">
+                <state-item state="success-loading">
+                    <view>success-loading</view>
+                </state-item>
+                <state-item state="success-empty" mini-class="success-empty">
+                    <view>success-empty</view>
+                    <button bind:tap="onTapSuccessNew">新建</button>
+                </state-item>
+                <state-item state="success-content" mode="hidden" mini-class="success-content">
+                    <view class="scroll-wrapper">
+                        <scroll-view class="content-list"
+                                     scroll-y="true">
+                            <view wx:for="{{list}}" wx:key="index" class="content-item">{{item.name}}</view>
+                        </scroll-view>
+                    </view>
+                </state-item>
+            </state-container>
+        </state-item>
+    </state-container>
 </view>

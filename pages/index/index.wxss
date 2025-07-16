@@ -1,47 +1,57 @@
-.page-wrapper {
+.page {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.header {
-    font-size: 1em;
-    padding: 0.5em;
-    text-align: center;
-    background: coral;
+.state-indicator {
+    padding: 0.5em 2em;
 }
 
-.outer-states-view {
+.actions {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em;
+    gap: 0.5em;
+}
+
+.page-state-container {
     flex: 1;
+    border: 2px solid red;
     overflow: hidden;
 }
 
-.states-view-ui-class {
-    background: cornsilk;
-}
-
 .page-fail {
-    background: cadetblue;
+    height: 100%;
+    background-color: #fddfdf;
+    text-align: center;
+    padding-top: 100rpx;
+    padding-bottom: 24rpx;
+    color: red;
+}
+
+.page-success {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #e0ffd4;
+}
+
+.success-state-container {
+    flex: 1;
+    overflow: hidden;
+    margin: 1em;
+    border: 2px solid blue;
+}
+
+.success-empty {
+    padding-top: 100rpx;
     text-align: center;
 }
 
-.message-text {
-    padding: 4em 0 0 0;
-    font-size: 1.5em;
-    color: white;
-}
-
-.message-action {
-    padding: 0.8em;
-    text-decoration: underline;
-}
-
-.page-empty {
-    background: chocolate;
-    text-align: center;
-}
-
-.page-content {
+.success-content {
+    height: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }

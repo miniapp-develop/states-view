@@ -1,60 +1,68 @@
 # 微信小程序 State View
 
-一个简单的根据状态切换页面的小程序组件。
-
 ## Usage
 
 开启微信小程序的 npm 支持：
 [https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)
 
-```shell script
+安装
+
+```bash
 npm install @mini-dev/states-view
-```
+````
+
+Tips: 安装完毕之后，记得使用 IDE 的 `工具 -> 构建 NPM` 命令同步 npm 模块。
 
 index.json
 
 ```json
 {
-  "usingComponents": {
-    "states-view": "@mini-dev/states-view/states-view",
-    "state-view": "@mini-dev/states-view/state-view"
-  }
+    "usingComponents": {
+        "state-container": "@mini-dev/states-view/state-container",
+        "state-item": "@mini-dev/states-view/state-item"
+    }
 }
 ```
 
 index.wxml
 
 ```html
-<states-view state="{{state}}">
-    <state-view state="a" bind:stateChanged="onStateChanged">a</state-view>
-    <state-view state="b">b</state-view>
-    <state-view state="c">c</state-view>
-    <state-view state="d" mode="hidden">d</state-view>
-</states-view>
+
+<state-container state="{{state}}" bind:change="xxx">
+    <state-item state="a" bind:change="yyy">a</state-item>
+    <state-item state="b">b</state-item>
+    <state-item state="c">c</state-item>
+    <state-item state="d" mode="hidden">d</state-item>
+</state-container>
 ```
 
-mode 属性[normal | hidden]，如果设置为 hidden，则对应的 state-view 内容只会显示或者隐藏，不会重新创建。
+> mode 属性`[normal | hidden]`，如果设置为 `hidden`，则对应的 state-view 内容只会显示或者隐藏，不会重新创建。
 
-## 自定义状态页
+
+index.js
 
 ```javascript
-const {StateView} = require("@mini-dev/states-view")
+this.setData({
+    state: 'd'
+});
 
-StateView({
+```
+
+### 自定义状态页
+
+示例：[./pages/components/loading](./pages/components/loading/index.js)
+
+```javascript
+import {StateItem} from "@mini-dev/states-view";
+
+StateItem({
     created() {
-        console.log('loading created');
+        console.log('[loading]created');
     },
     methods: {
         onStateChanged(active) {
-            console.log(`loading onStateChanged(${active})`);
+            console.log(`[loading]onStateChanged(${active})`);
         }
     }
 });
 ```
-
-## changelog
-
-### 0.0.8 
-1. 最低基础库 2.13.0.
-2. 属性统一修改为 state.
-

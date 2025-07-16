@@ -1,51 +1,41 @@
-const {connectParentChildren, createPresetComponent, MiniComponent} = require('@mini-dev/view-support');
+import ComponentCreator from "./_Component";
+import {StateItemBehavior, StateContainerBehavior, StateContainerKey, StateItemKey} from './StateBehaviors';
 
-export const {parent, child} = connectParentChildren('state');
-
-const StatesComponent = createPresetComponent({
-    options: {virtualHost: true}
-});
-
-exports.StatesView = function (option, factory = MiniComponent) {
-    StatesComponent(option, parent, factory);
-}
-
-const StateBehavior = Behavior({
-    properties: {
-        state: {
-            type: String,
-            value: ''
-        },
-        mode: {
-            type: String,
-            value: 'normal'
-        }
-    },
-    methods: {
-        onMiniChanged(state) {
-            const oldActive = this.data.active;
-            const newActive = state === this.data.state;
-            if (newActive !== oldActive) {
-                this.setData({
-                    active: newActive
-                });
-                this.triggerEvent('change', {
-                    active: newActive
-                });
-                this.onStateChanged && this.onStateChanged(newActive, oldActive);
+export function StateContainer(opts = {}, factory = ComponentCreator) {
+    if (!opts.behaviors) {
+        opts.behaviors = [];
+    }
+    if (!opts.relations) {
+        opts.relations = {};
+    }
+    opts.behaviors.unshift(StateContainerBehavior);
+    Object.assign(opts.relations, {
+        [StateItemKey]: {
+            type: 'child',
+            target: StateItemBehavior,
+            linked(child) {
+                child._onParentChanged(this.data.state);
             }
         }
+    });
+
+    return factory(opts);
+}
+
+export function StateItem(opts = {}, factory = ComponentCreator) {
+    if (!opts.behaviors) {
+        opts.behaviors = [];
     }
-});
+    if (!opts.relations) {
+        opts.relations = {};
+    }
+    opts.behaviors.unshift(StateItemBehavior);
+    Object.assign(opts.relations, {
+        [StateContainerKey]: {
+            type: 'parent',
+            target: StateContainerBehavior
+        }
+    });
 
-const StateComponent = createPresetComponent({
-    options: {virtualHost: true},
-    data: {
-        active: false
-    },
-    behaviors: [StateBehavior]
-});
-
-exports.StateView = function (option, factory = MiniComponent) {
-    StateComponent(option, child, factory);
+    return factory(opts);
 }
