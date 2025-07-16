@@ -1,3 +1,3 @@
-import {StatesView} from "../index";
+import {StateContainer} from "../index";
 
-StatesView();
+StateContainer();

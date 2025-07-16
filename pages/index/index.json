@@ -1,7 +1,7 @@
 {
     "usingComponents": {
         "state-container": "../../libs/state-container/index",
-        "state-view": "../../libs/state-view/index",
+        "state-item": "../../libs/state-item/index",
         "loading": "/pages/components/loading/index"
     }
 }

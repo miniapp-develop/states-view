@@ -1,18 +1,18 @@
 import ComponentCreator from "./_Component";
-import {StateBehavior, StatesBehavior, StatesViewKey, StateViewKey} from './StateBehaviors';
+import {StateItemBehavior, StateContainerBehavior, StateContainerKey, StateItemKey} from './StateBehaviors';
 
-export function StatesView(opts = {}, factory = ComponentCreator) {
+export function StateContainer(opts = {}, factory = ComponentCreator) {
     if (!opts.behaviors) {
         opts.behaviors = [];
     }
     if (!opts.relations) {
         opts.relations = {};
     }
-    opts.behaviors.unshift(StatesBehavior);
+    opts.behaviors.unshift(StateContainerBehavior);
     Object.assign(opts.relations, {
-        [StateViewKey]: {
+        [StateItemKey]: {
             type: 'child',
-            target: StateBehavior,
+            target: StateItemBehavior,
             linked(child) {
                 child._onParentChanged(this.data.state);
             }
@@ -22,18 +22,18 @@ export function StatesView(opts = {}, factory = ComponentCreator) {
     return factory(opts);
 }
 
-export function StateView(opts = {}, factory = ComponentCreator) {
+export function StateItem(opts = {}, factory = ComponentCreator) {
     if (!opts.behaviors) {
         opts.behaviors = [];
     }
     if (!opts.relations) {
         opts.relations = {};
     }
-    opts.behaviors.unshift(StateBehavior);
+    opts.behaviors.unshift(StateItemBehavior);
     Object.assign(opts.relations, {
-        [StatesViewKey]: {
+        [StateContainerKey]: {
             type: 'parent',
-            target: StatesBehavior
+            target: StateContainerBehavior
         }
     });
 

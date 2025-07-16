@@ -12,11 +12,11 @@
                      state="{{pageState}}"
                      bind:stateChanged="onPageStateChanged">
         <loading state="page-loading" mini-class="page-loading" bind:stateChanged="onPageStateChanged"/>
-        <state-view state="page-fail" mini-class="page-fail">
+        <state-item state="page-fail" mini-class="page-fail">
             <view class="fail-txt">加载失败</view>
             <button type="warn" bind:tap="onTapRetry">重试</button>
-        </state-view>
-        <state-view state="page-success" mini-class="page-success">
+        </state-item>
+        <state-item state="page-success" mini-class="page-success">
             <view class="actions">
                 <button type="default" class="action" bind:tap="onTapSuccessState" data-state="success-empty">empty</button>
                 <button type="primary" class="action" bind:tap="onTapSuccessState" data-state="success-content">content</button>
@@ -24,22 +24,22 @@
             <state-container mini-class="success-state-container"
                              state="{{successState}}"
                              bind:stateChanged="onSuccessStateChanged">
-                <state-view state="success-loading">
+                <state-item state="success-loading">
                     <view>success-loading</view>
-                </state-view>
-                <state-view state="success-empty" mini-class="success-empty">
+                </state-item>
+                <state-item state="success-empty" mini-class="success-empty">
                     <view>success-empty</view>
                     <button bind:tap="onTapSuccessNew">新建</button>
-                </state-view>
-                <state-view state="success-content" mode="hidden" mini-class="success-content">
+                </state-item>
+                <state-item state="success-content" mode="hidden" mini-class="success-content">
                     <view class="scroll-wrapper">
                         <scroll-view class="content-list"
                                      scroll-y="true">
                             <view wx:for="{{list}}" wx:key="index" class="content-item">{{item.name}}</view>
                         </scroll-view>
                     </view>
-                </state-view>
+                </state-item>
             </state-container>
-        </state-view>
+        </state-item>
     </state-container>
 </view>

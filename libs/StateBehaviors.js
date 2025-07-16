@@ -1,7 +1,7 @@
-const StateViewKey = 'StateView';
-const StatesViewKey = 'StatesView';
+const StateItemKey = 'StateItemKey';
+const StateContainerKey = 'StateContainerKey';
 
-const StatesBehavior = Behavior({
+const StateContainerBehavior = Behavior({
     properties: {
         state: {
             type: String,
@@ -15,7 +15,7 @@ const StatesBehavior = Behavior({
     },
     methods: {
         _onChanged(newStates, oldStates) {
-            const children = this.getRelationNodes(StateViewKey);
+            const children = this.getRelationNodes(StateItemKey);
             for (const child of children) {
                 child._onParentChanged(newStates);
             }
@@ -29,7 +29,7 @@ const StatesBehavior = Behavior({
     }
 });
 
-const StateBehavior = Behavior({
+const StateItemBehavior = Behavior({
     properties: {
         state: {
             type: String,
@@ -68,8 +68,8 @@ const StateBehavior = Behavior({
 });
 
 export {
-    StatesBehavior,
-    StateBehavior,
-    StatesViewKey,
-    StateViewKey
+    StateContainerBehavior,
+    StateItemBehavior,
+    StateContainerKey,
+    StateItemKey
 }

@@ -1,6 +1,6 @@
-import {StateView} from "../../../libs/index";
+import {StateItem} from "../../../libs/index";
 
-StateView({
+StateItem({
     created() {
         console.log('[loading]created');
     },
