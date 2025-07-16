@@ -11,10 +11,10 @@ index.json
 
 ```json
 {
-  "usingComponents": {
-    "states-view": "mini-app-states-view/states-view/index",
-    "state-view": "mini-app-states-view/state-view/index"
-  }
+    "usingComponents": {
+        "states-view": "@mini-dev/states-view/states-view",
+        "state-view": "@mini-dev/states-view/state-view"
+    }
 }
 ```
 
