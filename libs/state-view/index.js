@@ -1,3 +1,3 @@
-import StateView from "../StateView";
+import {StateView} from "../index";
 
 StateView();

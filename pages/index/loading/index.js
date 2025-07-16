@@ -1,4 +1,4 @@
-import StateView from "../../../libs/StateView";
+import {StateView} from "../../../libs/index";
 
 StateView({
     created() {
