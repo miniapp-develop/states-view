@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-.state-indicator{
+.state-indicator {
     padding: 0.5em 2em;
 }
 
@@ -16,27 +16,30 @@
 }
 
 .page-state-container {
+    flex: 1;
     border: 2px solid red;
+    overflow: hidden;
 }
 
 .page-fail {
+    height: 100%;
     background-color: #fddfdf;
     text-align: center;
-}
-
-.page-fail {
     padding-top: 100rpx;
     padding-bottom: 24rpx;
-    text-align: center;
     color: red;
 }
 
 .page-success {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #e0ffd4;
 }
 
 .success-state-container {
-    height: 50vh;
+    flex: 1;
+    overflow: hidden;
     margin: 1em;
     border: 2px solid blue;
 }
@@ -47,6 +50,8 @@
 }
 
 .success-content {
+    height: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
