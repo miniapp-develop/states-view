@@ -3,8 +3,11 @@
         <slot></slot>
     </view>
 </block>
-<block wx:else>
-    <view class="root mini-class" wx:if="{{active}}">
+<block wx:elif="{{active}}">
+    <view wx:if="{{useWrap}}" class="root mini-class">
         <slot></slot>
     </view>
+    <block wx:else>
+        <slot></slot>
+    </block>
 </block>

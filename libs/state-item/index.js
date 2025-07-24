@@ -1,3 +1,10 @@
 import {StateItem} from "../index";
 
-StateItem();
+StateItem({
+    properties: {
+        useWrap: {
+            type: Boolean,
+            value: true
+        }
+    },
+});
