@@ -1,11 +1,18 @@
 Page({
     data: {
+        useWrap: true,
         pageState: 'page-loading',
         successState: 'success-empty',
         list: new Array(50).fill(0).map((ele, index) => {
             return {
                 name: `item-${index}`
             };
+        })
+    },
+    onUseWrapChanged(e) {
+        console.log('onUseWrapChanged', e.detail.value);
+        this.setData({
+            useWrap: e.detail.value
         })
     },
     onTapPageState(e) {

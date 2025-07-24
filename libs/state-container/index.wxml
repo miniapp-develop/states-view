@@ -1,3 +1,6 @@
-<view class="root mini-class">
+<view wx:if="{{useWrap}}" class="root mini-class">
     <slot></slot>
 </view>
+<block wx:else>
+    <slot></slot>
+</block>

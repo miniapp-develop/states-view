@@ -1,14 +1,19 @@
 <view class="page">
-    <text class="state-indicator">
+    <view class="state-indicator">
         pageState:{{pageState}}
         successState:{{successState}}
-    </text>
+        <view>
+            useWrap:
+            <switch checked="{{useWrap}}" bind:change="onUseWrapChanged"/>
+        </view>
+    </view>
     <view class="actions">
         <button type="default" class="action" bind:tap="onTapPageState" data-state="page-loading">loading</button>
         <button type="warn" class="action" bind:tap="onTapPageState" data-state="page-fail">fail</button>
         <button type="primary" class="action" bind:tap="onTapPageState" data-state="page-success">success</button>
     </view>
-    <state-container mini-class="page-state-container"
+    <state-container useWrap="{{useWrap}}"
+                     mini-class="page-state-container"
                      state="{{pageState}}"
                      bind:change="onPageStateChanged">
         <loading state="page-loading" mini-class="page-loading" bind:change="onPageStateChanged"/>

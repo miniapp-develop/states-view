@@ -1,3 +1,10 @@
 import {StateContainer} from "../index";
 
-StateContainer();
+StateContainer({
+    properties: {
+        useWrap: {
+            type: Boolean,
+            value: true
+        }
+    },
+});
