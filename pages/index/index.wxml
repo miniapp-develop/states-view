@@ -21,7 +21,8 @@
             <view class="fail-txt">加载失败,由于配置了useWrap=false，因此导致 mini-class="page-fail" 失效</view>
             <button type="warn" bind:tap="onTapRetry">重试</button>
         </state-item>
-        <state-item state="page-success" mini-class="page-success">
+        <state-item mode="hidden" useWrap="{{false}}" state="page-success" mini-class="page-success">
+            <view>mode="hidden" 导致 useWrap=false 无效</view>
             <view class="actions">
                 <button type="default" class="action" bind:tap="onTapSuccessState" data-state="success-empty">empty</button>
                 <button type="primary" class="action" bind:tap="onTapSuccessState" data-state="success-content">content</button>
